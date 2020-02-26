@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:placeHolderViewModel="clr-namespace:TestExample.ViewModel.PlaceHolder"
+                    xmlns:placeHolder="clr-namespace:TestExample.View.PlaceHolder"
+                    xmlns:userControls="clr-namespace:TestExample.UserControls">
+    <DataTemplate DataType="{x:Type placeHolderViewModel:PlaceHolderUserControlViewModel1}">
+        <placeHolder:PlaceHolderUserControlView1/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type placeHolderViewModel:PlaceHolderUserControlViewModel2}">
+        <placeHolder:PlaceHolderUserControlView2/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type userControls:TreeListExpandHeaderControlViewModel}">
+        <userControls:TreeListExpandHeaderControl/>
+    </DataTemplate>
+</ResourceDictionary>

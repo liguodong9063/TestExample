@@ -1,0 +1,142 @@
+﻿<Window x:Class="TestExample.View.TableView.EnterBehaviorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestExample.View.TableView"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:editors="http://wpfcontrols.com/"
+        xmlns:infrastructure="clr-namespace:TestExample.Infrastructure"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        DataContext="{dxmvvm:ViewModelSource Type=tableView:EnterBehaviorViewModel}"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:tableView="clr-namespace:TestExample.ViewModel.TableView"
+        mc:Ignorable="d"
+        Title="EnterBehaviorView" Height="450" Width="800">
+    <Grid Height="800">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--所有列按比例-->
+        <dxg:GridControl x:Name="GridControl" Grid.Row="0" ToolTip="第一列占屏幕1/3宽度，第二列占屏幕2/3宽度" PreviewKeyDown="GridControl_OnPreviewKeyDown">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Header="ID" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="*">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="ID2" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="*">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="名称1" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="2*">
+                    <dxg:GridColumn.EditTemplate>
+                        <ControlTemplate>
+                            <StackPanel DataContext="{Binding RowData.Row}">
+                                <editors:AutoCompleteTextBox x:Name="PART_Editor"
+                                                         DisplayMember="Name"
+                                                         Text="{infrastructure:ValidationBinding Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                         Provider="{Binding DataContext.SuggestionProvider,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                                                         Height="25"
+                                                         Watermark="在此输入"
+                                                         IsInColumn="True"
+                                                         SelectionChanged="PART_Editor_OnSelectionChanged"
+                                                         dx:ThemeManager.ThemeName="None">
+                                    <editors:AutoCompleteTextBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding Name}"/>
+                                        </DataTemplate>
+                                    </editors:AutoCompleteTextBox.ItemTemplate>
+                                    <editors:AutoCompleteTextBox.LoadingContent>
+                                        <Label Content="Loading..." Margin="5" FontSize="14" />
+                                    </editors:AutoCompleteTextBox.LoadingContent>
+                                </editors:AutoCompleteTextBox>
+                                <!--<ComboBox x:Name="PART_Editor" dx:ThemeManager.ThemeName="None">
+                                    <ComboBox.Items>
+                                        <ComboBoxItem Content="A"/>
+                                        <ComboBoxItem Content="B"/>
+                                        <ComboBoxItem Content="C"/>
+                                    </ComboBox.Items>
+                                </ComboBox>-->
+                            </StackPanel>
+                        </ControlTemplate>
+                    </dxg:GridColumn.EditTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="名称2" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="2*">
+                    <dxg:GridColumn.EditTemplate>
+                        <ControlTemplate>
+                            <dxe:TextEdit x:Name="PART_Editor"/>
+                        </ControlTemplate>
+                    </dxg:GridColumn.EditTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="名称3" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="2*">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                    </dxg:GridColumn.EditSettings>
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="名称4" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="2*">
+                    <dxg:GridColumn.DisplayTemplate>
+                        <ControlTemplate>
+                            <TextBlock Text="{Binding Data.Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        </ControlTemplate>
+                    </dxg:GridColumn.DisplayTemplate>
+                    <dxg:GridColumn.EditTemplate>
+                        <ControlTemplate>
+                            <!--<editors:AutoCompleteTextBox x:Name="PART_Editor"
+                                                         DisplayMember="Name"
+                                                         Text="{infrastructure:ValidationBinding Data.Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                         Provider="{Binding DataContext.SuggestionProvider,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                                                         Height="25"
+                                                         Watermark="在此输入"
+                                                         IsInColumn="True"
+                                                         dx:ThemeManager.ThemeName="None">
+                                <editors:AutoCompleteTextBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding Name}"/>
+                                    </DataTemplate>
+                                </editors:AutoCompleteTextBox.ItemTemplate>
+                                <editors:AutoCompleteTextBox.LoadingContent>
+                                    <Label Content="Loading..." Margin="5" FontSize="14" />
+                                </editors:AutoCompleteTextBox.LoadingContent>
+                            </editors:AutoCompleteTextBox>-->
+                            <editors:AutoCompleteTextBox DisplayMember="Name"
+                                                         Text="{infrastructure:ValidationBinding Data.Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                         Provider="{Binding DataContext.SuggestionProvider,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                                                         Height="25"
+                                                         Watermark="在此输入"
+                                                         IsInColumn="True">
+                                <editors:AutoCompleteTextBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Label Content="{Binding Name}"/>
+                                    </DataTemplate>
+                                </editors:AutoCompleteTextBox.ItemTemplate>
+                                <editors:AutoCompleteTextBox.LoadingContent>
+                                    <Label Content="Loading..." Margin="5" FontSize="14" />
+                                </editors:AutoCompleteTextBox.LoadingContent>
+                            </editors:AutoCompleteTextBox>
+                        </ControlTemplate>
+                    </dxg:GridColumn.EditTemplate>
+                </dxg:GridColumn>
+                <dxg:GridColumn Header="名称5" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="2*" AllowFocus="True" AllowEditing="True">
+                    <dxg:GridColumn.EditTemplate>
+                        <ControlTemplate>
+                            <StackPanel DataContext="{Binding RowData.Row}">
+                                <TextBox x:Name="PART_Editor" dx:ThemeManager.ThemeName="None"/>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </dxg:GridColumn.EditTemplate>
+                </dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView x:Name="TableView" ShowIndicator="True" ShowHorizontalLines="True" AutoWidth="False" ShowVerticalLines="False" AllowConditionalFormattingManager="True" AllowConditionalFormattingMenu="True" />
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+
+        <Button Grid.Row="1" Click="ButtonBase_OnClick"/>
+    </Grid>
+</Window>

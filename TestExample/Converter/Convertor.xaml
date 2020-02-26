@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converter="clr-namespace:TestExample.Converter">
+    <converter:MyConverter x:Key="MyConverter" />
+    <converter:TestObject4GetParentIdConverter x:Key="TestObject4GetParentIdConverter"/>
+    <converter:ObjectToItSelfTestConverter x:Key="ObjectToItSelfTestConverter"/>
+    <converter:InverseVisibilityConverter x:Key="InverseVisibilityConverter"/>
+    <converter:WidthConverter x:Key="WidthConverter"/>
+</ResourceDictionary>

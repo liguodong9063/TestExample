@@ -1,0 +1,36 @@
+﻿<Window x:Class="TestExample.View.TreeListView.TreeListViewOperatorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestExample.View.TreeListView"
+        xmlns:userControls="clr-namespace:TestExample.UserControls"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        mc:Ignorable="d"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:treeListView="clr-namespace:TestExample.ViewModel.TreeListView"
+        DataContext="{dxmvvm:ViewModelSource Type=treeListView:TreeListViewOperatorViewModel}"
+        Title="TreeListViewOperatorView" Height="450" Width="800">
+    <Grid>
+        <Grid.Resources>
+            <local:TreeListViewChildNodeSelector x:Key="TreeListViewChildNodeSelector"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Button Width="100" Height="30" Content="添加苹果" Command="{Binding AddCommand}"/>
+            <Button Width="100" Height="30" Content="删除" Command="{Binding DeleteCommand}"/>
+        </StackPanel>
+        <userControls:CustomGridControl x:Name="GridControl" Grid.Row="1" ItemsSource="{Binding ItemsSources}" SelectedItem="{Binding SelectedItem}">
+            <userControls:CustomGridControl.Columns>
+                <userControls:CustomGridColumn Header="编号" FieldName="PathCode"/>
+                <userControls:CustomGridColumn Header="名称" FieldName="Name"/>
+            </userControls:CustomGridControl.Columns>
+            <userControls:CustomGridControl.View>
+                <dxg:TreeListView TreeDerivationMode="ChildNodesSelector" ChildNodesSelector="{StaticResource TreeListViewChildNodeSelector}" AutoExpandAllNodes="True"/>
+            </userControls:CustomGridControl.View>
+        </userControls:CustomGridControl>
+    </Grid>
+</Window>

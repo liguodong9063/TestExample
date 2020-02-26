@@ -1,0 +1,109 @@
+﻿<Window x:Class="TestExample.View.TreeListView.TreeListView4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:treeListView="clr-namespace:TestExample.View.TreeListView"
+        xmlns:userControls="clr-namespace:TestExample.UserControls"
+        xmlns:treeListView1="clr-namespace:TestExample.ViewModel.TreeListView"
+        mc:Ignorable="d"
+        Title="树列表（Parent不可选中，控制Parent按钮IsEnable，不允许Shift连选，不允许跨Parent选明细）" Height="500" Width="1000" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <treeListView1:TreeListView4ViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Width" Value="50"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="Margin" Value="10,5,50,5"/>
+            </Style>
+            <DataTemplate x:Key="EvenRowTemplate">
+                <Border Margin="1" CornerRadius="5" Background="Blue">
+                    <TextBlock Text="{Binding DataContext.Name}" Margin="5" Foreground="Green"></TextBlock>
+                </Border>
+            </DataTemplate>
+            <DataTemplate x:Key="OddRowTemplate">
+                <Border Margin="1" CornerRadius="5" Background="Orange">
+                    <TextBlock Text="{Binding DataContext.Name}" Margin="5" Foreground="White"></TextBlock>
+                </Border>
+            </DataTemplate>
+            <DataTemplate x:Key="ParentRowTemplate">
+                <!--
+                如模板内容不需要跟随水平滚动条滚动则需要做以下设置（参考TreeListView2.xaml）：
+                1、TreeListView上的AllowHorizontalScrollingVirtualization属性设置成True(设置成False将会解决该模板滑动不流畅的问题);
+                2、将模板Grid对应的Margin="{Binding View.ScrollingVirtualizationMargin}"删除；
+                -->
+                <Grid Margin="{Binding View.ScrollingVirtualizationMargin}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <!--<Label Content="{Binding DataContext.Name}"/>-->
+                        <Label Content="普通碳素板"/>
+                        <Label Content="10*2200*L"/>
+                        <Label Content="Q345B"/>
+                        <Label Content="萍钢"/>
+                        <Label Content="¥2585.00（磅计）"/>
+                        <Label Content=" 3件 / 4.230吨"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="小计："/>
+                            <Label Grid.Column="1" Content="0件/0.000吨"/>
+                            <Button Grid.Column="2" Content="配货" Click="ButtonBase_OnClick">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="IsEnabled">
+                                            <Setter.Value>
+                                                <MultiBinding Converter="{StaticResource TestObject4GetParentIdConverter}">
+                                                    <Binding Path="SelectedItem" ElementName="GridControl"/>
+                                                    <Binding Path="Row.Id"/>
+                                                </MultiBinding>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Button Grid.Column="3" Content="删除"/>
+                            <Button Grid.Column="4" Content="复制"/>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+            <treeListView:RowTemplateSelector3 x:Key="rowTemplateSelector"
+                                              EvenRowTemplate="{StaticResource EvenRowTemplate}"
+                                              OddRowTemplate="{StaticResource OddRowTemplate}"
+                                              ParentRowTemplate="{StaticResource ParentRowTemplate}"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <dxg:GridControl x:Name="GridControl" Grid.Row="0" SelectedItems="{Binding SelectedItems,Mode=TwoWay}" ItemsSource="{Binding Items,Mode=TwoWay}" SelectionMode="Row">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Header="ID" FieldName="Id"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="类型" FieldName="Type"/>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <userControls:MyTreeListView KeyFieldName="Id" ParentFieldName="ParentId" AutoExpandAllNodes="True" ShowIndicator="False" ShowHorizontalLines="True" ShowVerticalLines="True" RowIndent="0" DataRowTemplateSelector="{StaticResource rowTemplateSelector}" AllowHorizontalScrollingVirtualization="False" FocusedRowChanging="MyTreeListView_OnFocusedRowChanging"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>

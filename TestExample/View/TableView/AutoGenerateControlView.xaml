@@ -1,0 +1,189 @@
+﻿<Window x:Class="TestExample.View.TableView.AutoGenerateControlView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        DataContext="{dxmvvm:ViewModelSource Type=tableView:AutoGenerateControlViewModel}"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:tableView="clr-namespace:TestExample.ViewModel.TableView"
+        xmlns:editors="http://wpfcontrols.com/"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxgt="http://schemas.devexpress.com/winfx/2008/xaml/grid/themekeys"
+        xmlns:infrastructure="clr-namespace:TestExample.Infrastructure"
+        mc:Ignorable="d"
+        Title="自动生成控件" Height="450" Width="300">
+    <StackPanel Orientation="Vertical">
+        <!--<dxg:GridControl x:Name="AccountingItemGridControl" ItemsSource="{Binding AccountingItems}" ContextMenu="{x:Null}" ItemsSourceChanged="AccountingItemGridControl_OnItemsSourceChanged">
+            <dxg:GridControl.Resources>
+                <ControlTemplate x:Key="{dxgt:GridControlThemeKey ResourceKey=BorderTemplate, ThemeName=Office2016White}" TargetType="{x:Type ContentControl}">
+                    <Grid>
+                        <ContentPresenter />
+                    </Grid>
+                </ControlTemplate>
+                <Style TargetType="dxg:RowControl">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="ShowBottomLine" Value="False"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{x:Null}" />
+                            <Setter Property="Foreground" Value="{x:Null}" />
+                        </Trigger>
+                        <Trigger Property="SelectionState" Value="FocusedAndSelected">
+                            <Setter Property="Background" Value="{x:Null}" />
+                            <Setter Property="Foreground" Value="{x:Null}" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=SelectionState}" Value="Focused">
+                            <Setter Property="Background" Value="{x:Null}" />
+                            <Setter Property="Foreground" Value="{x:Null}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=SelectionState}" Value="Selected">
+                            <Setter Property="Background" Value="{x:Null}" />
+                            <Setter Property="Foreground" Value="{x:Null}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </dxg:GridControl.Resources>
+            <dxg:GridControl.View>
+                <dxg:TableView ShowGroupPanel="False" ShowColumnHeaders="False" ShowIndicator="False" VerticalScrollbarVisibility="Hidden">
+                    <dxg:TableView.DataRowTemplate>
+                        <DataTemplate>
+                            <Grid VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="60"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label VerticalContentAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="{Binding Row.TypeName}"/>
+                                        <Label Content="："/>
+                                    </StackPanel>
+                                </Label>
+                                <editors:AutoCompleteTextBox x:Name="AutoComplete" Grid.Column="1" 
+                                                             DisplayMember="Name"
+                                                             SelectedItem="{Binding Row.SelectedDataItem,Mode=TwoWay}"
+                                                             Text="{Binding Row.InputedText,Mode=TwoWay}"
+                                                             Provider="{Binding Row.SuggestionProvider}"
+                                                             Height="30"
+                                                             Watermark="在此输入" TabIndex="2">
+                                    <editors:AutoCompleteTextBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="40"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Content="{Binding No}"/>
+                                                <Label Grid.Column="1" Content="{Binding Name}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </editors:AutoCompleteTextBox.ItemTemplate>
+                                    <editors:AutoCompleteTextBox.LoadingContent>
+                                        <Label Content="Loading..." Margin="5" FontSize="14" />
+                                    </editors:AutoCompleteTextBox.LoadingContent>
+                                </editors:AutoCompleteTextBox>
+                            </Grid>
+                        </DataTemplate>
+                    </dxg:TableView.DataRowTemplate>
+                </dxg:TableView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>-->
+
+        <ListView Name="ListView" ItemsSource="{Binding AccountingItems}" BorderThickness="0" Background="{x:Null}" KeyboardNavigation.TabNavigation="Continue">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Margin" Value="0,5,0,5"/>
+                    <Setter Property="Focusable" Value="False"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Grid VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label VerticalContentAlignment="Center">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="{Binding TypeName}"/>
+                                            <Label Content="："/>
+                                        </StackPanel>
+                                    </Label>
+                                    <!--CustomSelectionChanged="AutoComplete_OnCustomSelectionChanged"-->
+                                    <editors:AutoCompleteTextBox x:Name="AutoComplete" Grid.Column="1" 
+                                                             DisplayMember="Name"
+                                                             SelectedItem="{Binding SelectedDataItem,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                             Text="{infrastructure:ValidationBinding InputedText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                                             Provider="{Binding SuggestionProvider}"
+
+                                                             Height="30"
+                                                             Watermark="在此输入">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding DataContext.CustomSelectionChangedCommand,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ListView}}" CommandParameter="{Binding ElementName=AutoComplete,Path=.}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                        <editors:AutoCompleteTextBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="40"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0" Content="{Binding No}"/>
+                                                    <Label Grid.Column="1" Content="{Binding Name}"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </editors:AutoCompleteTextBox.ItemTemplate>
+                                        <editors:AutoCompleteTextBox.LoadingContent>
+                                            <Label Content="Loading..." Margin="5" FontSize="14" />
+                                        </editors:AutoCompleteTextBox.LoadingContent>
+                                    </editors:AutoCompleteTextBox>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+
+        
+
+        <Button Content="提交" Click="ButtonBase_OnClick"/>
+
+        
+
+        <Button Content="更改数据源" Click="ChangeSource_OnClick"/>
+
+
+        <editors:AutoCompleteTextBox x:Name="TT" 
+                                     DisplayMember="Name"
+                                     Text="{infrastructure:ValidationBinding ValidationDto.Name,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                     Provider="{Binding Suggestion}"
+                                     SelectionChanged="AutoComplete_OnCustomSelectionChanged"
+                                     Watermark="请输入"
+                                     Margin="0,10,0,0"
+                                     Width="200" Height="25">
+            <editors:AutoCompleteTextBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Name}" Width="{TemplateBinding Width}"/>
+                </DataTemplate>
+            </editors:AutoCompleteTextBox.ItemTemplate>
+            <editors:AutoCompleteTextBox.LoadingContent>
+                <TextBlock Text="Loading..." Margin="5" FontSize="14" />
+            </editors:AutoCompleteTextBox.LoadingContent>
+        </editors:AutoCompleteTextBox>
+
+
+        <TextBlock x:Name="TestTip">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="当前选中项："/>
+                <TextBlock Text="{Binding TipInfo}"/>
+            </StackPanel>
+        </TextBlock>
+    </StackPanel>
+</Window>

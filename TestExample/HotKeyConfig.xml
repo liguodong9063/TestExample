@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HotKeys>
+  <HotKey Key="Down" Desc="引入上行值" IsUsable="True" IsSelectCtrl="True" IsSelectShift="False" IsSelectAlt="False">DragIn</HotKey>
+  <HotKey Key="Decimal" Desc="找平" IsUsable="True" IsSelectCtrl="True" IsSelectShift="False" IsSelectAlt="False">MakeLevel</HotKey>
+</HotKeys>

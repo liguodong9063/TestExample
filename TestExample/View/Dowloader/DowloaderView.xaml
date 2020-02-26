@@ -1,0 +1,23 @@
+﻿<Window x:Class="TestExample.View.Dowloader.DowloaderView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Dowloader" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ProgressBar x:Name="ProcessBar" Grid.Row="1" Margin="20,0,20,0"/>
+        <Label x:Name="LblDownloadPercentent" Grid.Row="2" Foreground="BlueViolet" Margin="20,0,20,0"/>
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button Click="Download_OnClick" Content="下载" Width="80" Height="40" Margin="0,0,20,0"/>
+            <Button Click="Run_OnClick" Content="运行" Width="80" Height="40"/>
+        </StackPanel>
+    </Grid>
+</Window>

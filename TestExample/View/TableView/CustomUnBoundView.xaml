@@ -1,0 +1,71 @@
+﻿<Window x:Class="TestExample.View.TableView.CustomUnBoundView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:tableView="clr-namespace:TestExample.ViewModel.TableView"
+        xmlns:userControls="clr-namespace:TestExample.UserControls"
+        DataContext="{dxmvvm:ViewModelSource Type=tableView:CustomUnBoundViewModel}"
+        mc:Ignorable="d"
+        Title="CustomUnBoundView" Height="450" Width="800">
+    <Window.Resources>
+        <!--<Style TargetType="dxg:GroupRowControl">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>-->
+
+
+        <!--分组合计模板、合计模板-->
+        <DataTemplate x:Key="SummaryItemTemplate">
+            <Border HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <TextBlock Text="{Binding Column.TotalSummaryText}" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="1,0"/>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="GroupSummaryItemTemplate">
+            <Border HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <TextBlock Text="{Binding GroupRowData.GroupSummaryData[0].SummaryValue}" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="1,0"/>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <userControls:CustomGridControl x:Name="GridControl" ItemsSource="{Binding Students}" CustomUnboundColumnData="GridControl_OnCustomUnboundColumnData">
+            <userControls:CustomGridControl.Columns>
+                <userControls:CustomGridColumn FieldName="Id" Header="ID" AllowGrouping="True"/>
+                <userControls:CustomGridColumn FieldName="Sex" Header="性别">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings DisplayMember="Name" ValueMember="Id" HorizontalContentAlignment="Center" IsTextEditable="False" ItemsSource="{Binding DataContext.SexTypes,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}" />
+                    </dxg:GridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn FieldName="UnBoundGrade" Header="年级" UnboundType="Object" ColumnFilterMode="DisplayText">
+                    <dxg:GridColumn.EditSettings>
+                        <dxe:ComboBoxEditSettings DisplayMember="Name" HorizontalContentAlignment="Center" IsTextEditable="False" ItemsSource="{Binding DataContext.Grades,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}" />
+                    </dxg:GridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn FieldName="Name" Header="姓名"/>
+                <userControls:CustomGridColumn FieldName="UnBoundBillState" Header="状态" UnboundType="String"/>
+            </userControls:CustomGridControl.Columns>
+            <userControls:CustomGridControl.GroupSummary>
+                <dxg:GridSummaryItem FieldName="Id" SummaryType="Sum"/>
+            </userControls:CustomGridControl.GroupSummary>
+            <userControls:CustomGridControl.TotalSummary>
+                <dxg:GridSummaryItem FieldName="Id" SummaryType="Sum" DisplayFormat="{}{0:F2}"/>
+                <dxg:GridSummaryItem FieldName="UnBoundBillState" SummaryType="Count" DisplayFormat="{}{0:F2}"/>
+            </userControls:CustomGridControl.TotalSummary>
+            <dxg:GridControl.View>
+                <userControls:CustomTableView x:Name="TableView" CellValueChanging="GridViewBase_OnCellValueChanging" ShowTotalSummary="True"  GroupSummaryDisplayMode="AlignByColumns">
+                    <userControls:CustomTableView.Style>
+                        <Style TargetType="userControls:CustomTableView">
+                            <Setter Property="TotalSummaryItemTemplate" Value="{DynamicResource SummaryItemTemplate}" />
+                            <Setter Property="GroupColumnSummaryItemTemplate" Value="{DynamicResource GroupSummaryItemTemplate}" />
+                        </Style>
+                    </userControls:CustomTableView.Style>
+                </userControls:CustomTableView>
+            </dxg:GridControl.View>
+        </userControls:CustomGridControl>
+    </Grid>
+</Window>

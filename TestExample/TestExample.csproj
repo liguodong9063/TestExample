@@ -1,0 +1,631 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.3.2.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.3.2.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{43B3645F-3AD3-4753-BCF9-0B5D8E9D46C7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TestExample</RootNamespace>
+    <AssemblyName>TestExample</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ChnCharInfo">
+      <HintPath>..\Lib\ChnCharInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Charts.v16.2.Core">
+      <HintPath>..\Lib\DevDll\DevExpress.Charts.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v16.2">
+      <HintPath>..\Lib\DevDll\DevExpress.Data.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v16.2">
+      <HintPath>..\Lib\DevDll\DevExpress.Mvvm.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v16.2.Core">
+      <HintPath>..\Lib\DevDll\DevExpress.Printing.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Charts.v16.2">
+      <HintPath>..\Lib\DevDll\DevExpress.Xpf.Charts.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Core.v16.2">
+      <HintPath>..\Lib\DevDll\DevExpress.Xpf.Core.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v16.2">
+      <HintPath>..\Lib\DevDll\DevExpress.Xpf.Grid.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v16.2.Core">
+      <HintPath>..\Lib\DevDll\DevExpress.Xpf.Grid.v16.2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Grid.v16.2.Extensions">
+      <HintPath>..\Lib\DevDll\DevExpress.Xpf.Grid.v16.2.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Printing.v16.2">
+      <HintPath>..\Lib\DevDll\DevExpress.Xpf.Printing.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Ribbon.v16.2">
+      <HintPath>..\Lib\DevDll\DevExpress.Xpf.Ribbon.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.DXStyle.v16.2">
+      <HintPath>..\Lib\DevDll\DevExpress.Xpf.Themes.DXStyle.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpf.Themes.Office2016White.v16.2">
+      <HintPath>..\Lib\DevDll\DevExpress.Xpf.Themes.Office2016White.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport, Version=2013.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\FastReport\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Bars, Version=2013.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\FastReport\FastReport.Bars.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Editor, Version=2013.2.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\FastReport\FastReport.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF4">
+      <HintPath>..\Lib\DevDll\GalaSoft.MvvmLight.WPF4.dll</HintPath>
+    </Reference>
+    <Reference Include="Linkon.ErpClient.Common">
+      <HintPath>..\Lib\Linkon.ErpClient.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\Lib\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Layout.Toolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\System.Windows.Controls.Layout.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\Lib\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFToolkit.3.5.50211.1\lib\WPFToolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Common\AccountingItemDto.cs" />
+    <Compile Include="Common\ColumnTypes.cs" />
+    <Compile Include="Common\ColumnTypeWidth.cs" />
+    <Compile Include="Common\GridUniqueNames.cs" />
+    <Compile Include="Common\IdNameObject.cs" />
+    <Compile Include="Common\TestTypeEnum.cs" />
+    <Compile Include="Converter\InverseVisibilityConverter.cs" />
+    <Compile Include="Converter\WidthConverter.cs" />
+    <Compile Include="Converter\ObjectToItSelfTestConverter.cs" />
+    <Compile Include="Converter\TestObject4GetParentIdConverter.cs" />
+    <Compile Include="Infrastructure\AutoClosedMsgBox.cs" />
+    <Compile Include="Infrastructure\GlobalBarCodeHook.cs" />
+    <Compile Include="Infrastructure\BaseWindow.cs" />
+    <Compile Include="Infrastructure\Bindings\ValidationBinding.cs" />
+    <Compile Include="Infrastructure\CustomViewModelBase.cs" />
+    <Compile Include="Infrastructure\Localizers\CustomerEditorLocalizer.cs" />
+    <Compile Include="Infrastructure\Localizers\CustomerFilterUIElementLocalizer.cs" />
+    <Compile Include="Infrastructure\Localizers\CustomerGridControlLoaclizer.cs" />
+    <Compile Include="Infrastructure\Messages\CustomNotificationMessenger.cs" />
+    <Compile Include="Infrastructure\Messages\Token\NotificationMessageToken.cs" />
+    <Compile Include="Infrastructure\ValidationBinding.cs" />
+    <Compile Include="Model\AutoCompleteTextBox\AutoCompleteIdNameDto.cs" />
+    <Compile Include="Model\AutoGenerateColumn\CustomColumn.cs" />
+    <Compile Include="Model\AutoGenerateColumn\CustomColumnValue.cs" />
+    <Compile Include="Model\AutoGenerateColumn\CustomHeader.cs" />
+    <Compile Include="Model\AutoGenerateColumn\CustomRow.cs" />
+    <Compile Include="Model\CustomColumnDispaly.cs" />
+    <Compile Include="Model\CustomColumnDisplayDetail.cs" />
+    <Compile Include="Model\CustomField.cs" />
+    <Compile Include="Model\CustomFieldSource.cs" />
+    <Compile Include="Model\HomeNavigationModel.cs" />
+    <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Model\PagedData.cs" />
+    <Compile Include="Resource\EditorLocalizerResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditorLocalizerResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ColumnDisplayConfigurationButton.cs" />
+    <Compile Include="UserControls\CustomGridColumn.cs" />
+    <Compile Include="UserControls\CustomGridControl.cs" />
+    <Compile Include="UserControls\CustomListView.cs" />
+    <Compile Include="UserControls\CustomNewComboBox.cs" />
+    <Compile Include="UserControls\CustomComboBox.cs" />
+    <Compile Include="UserControls\CustomTableView.cs" />
+    <Compile Include="UserControls\MyTreeListView.cs" />
+    <Compile Include="UserControls\SlidingControl.xaml.cs">
+      <DependentUpon>SlidingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SlidingControlViewModel.cs" />
+    <Compile Include="UserControls\TreeListExpandHeaderControl.xaml.cs">
+      <DependentUpon>TreeListExpandHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TreeListExpandHeaderControlViewModel.cs" />
+    <Compile Include="UserControls\ViewPresenter.cs" />
+    <Compile Include="Utilities\IdNameSuggestionProvider.cs" />
+    <Compile Include="Utilities\AutoGenerateColumnSuggestionProvider.cs" />
+    <Compile Include="Utilities\AccountingItemSuggestionProvider.cs" />
+    <Compile Include="Utilities\CustomKeyBinding.cs" />
+    <Compile Include="Utilities\CustomLookUpEdit.cs" />
+    <Compile Include="Utilities\GridControlColumnInformationHelper.cs" />
+    <Compile Include="Utilities\HotKey\EHotKeySetting.cs" />
+    <Compile Include="Utilities\HotKey\EKey.cs" />
+    <Compile Include="Utilities\HotKey\HotKeyHelper.cs" />
+    <Compile Include="Utilities\HotKey\HotKeyManager.cs" />
+    <Compile Include="Utilities\HotKey\HotKeyModel.cs" />
+    <Compile Include="Utilities\HotKey\HotKeySettingsManager.cs" />
+    <Compile Include="Utilities\LoadXAML.cs" />
+    <Compile Include="Utilities\ObjectCopier.cs" />
+    <Compile Include="Utilities\ObservableCollectionHelper.cs" />
+    <Compile Include="Utilities\ObservableCollectionHelperForAutoGenerate.cs" />
+    <Compile Include="Utilities\PropertyDescriptorHelper.cs" />
+    <Compile Include="Utilities\PropertyDescriptorHelperForAutoGenerate.cs" />
+    <Compile Include="Utilities\ReflectHelper.cs" />
+    <Compile Include="Utilities\StringHelper.cs" />
+    <Compile Include="Utilities\TreeListExpandedNodesHelper.cs" />
+    <Compile Include="Utilities\VisualSearchHelper.cs" />
+    <Compile Include="Utilities\ApplicationHelper.cs" />
+    <Compile Include="Utilities\XmlHelper.cs" />
+    <Compile Include="ViewModel\AutoComplete\AutoComplete2ViewModel.cs" />
+    <Compile Include="ViewModel\AutoComplete\AutoCompleteViewModel.cs" />
+    <Compile Include="ViewModel\ComboBox\TransparentComboBoxViewModel.cs" />
+    <Compile Include="ViewModel\ComboBox\NewComboBoxViewModel.cs" />
+    <Compile Include="ViewModel\ComboBox\ComboBoxViewModel.cs" />
+    <Compile Include="ViewModel\CustomerConfigViewModel.cs" />
+    <Compile Include="ViewModel\HotKey\ShortCutViewModel.cs" />
+    <Compile Include="ViewModel\LookUpEdit\LookUpEditViewModel.cs" />
+    <Compile Include="ViewModel\PlaceHolder\PlaceHolderUserControlViewModel1.cs" />
+    <Compile Include="ViewModel\PlaceHolder\PlaceHolderUserControlViewModel2.cs" />
+    <Compile Include="ViewModel\PlaceHolder\PlaceHolderViewModel.cs" />
+    <Compile Include="ViewModel\HotKey\HotKeyViewModel.cs" />
+    <Compile Include="ViewModel\TableView\EnterBehaviorViewModel.cs" />
+    <Compile Include="ViewModel\TableView\AutoGenerateColumnViewModel.cs" />
+    <Compile Include="ViewModel\TableView\AutoGenerateControlViewModel.cs" />
+    <Compile Include="ViewModel\TableView\BigDataViewModel.cs" />
+    <Compile Include="ViewModel\TableView\ColumnWidthModeViewModel.cs" />
+    <Compile Include="ViewModel\TableView\CustomUnBoundViewModel.cs" />
+    <Compile Include="ViewModel\TableView\SelectableAndEditableColumnViewModel.cs" />
+    <Compile Include="ViewModel\TreeListView\TreeListView5ViewModel.cs" />
+    <Compile Include="ViewModel\TreeListView\TreeListView4ViewModel.cs" />
+    <Compile Include="ViewModel\TreeListView\TreeListViewOperatorViewModel.cs" />
+    <Compile Include="View\AutoClosedWindow.xaml.cs">
+      <DependentUpon>AutoClosedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AutoComplete\AutoCompleteView.xaml.cs">
+      <DependentUpon>AutoCompleteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComboBox\TransparentComboBoxView.xaml.cs">
+      <DependentUpon>TransparentComboBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerConfigView.xaml.cs">
+      <DependentUpon>CustomerConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DockPanel\DockPanelView.xaml.cs">
+      <DependentUpon>DockPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListView\ListViewScrollBehaviorView.xaml.cs">
+      <DependentUpon>ListViewScrollBehaviorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Other\FileMultiSelectView.xaml.cs">
+      <DependentUpon>FileMultiSelectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Other\OtherView.xaml.cs">
+      <DependentUpon>OtherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProgressBarWindow.xaml.cs">
+      <DependentUpon>ProgressBarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComboBox\NewComboBoxView.xaml.cs">
+      <DependentUpon>NewComboBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComboBox\ComboBoxView.xaml.cs">
+      <DependentUpon>ComboBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dowloader\DowloaderView.xaml.cs">
+      <DependentUpon>DowloaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LookUpEdit\LookUpEditView.xaml.cs">
+      <DependentUpon>LookUpEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PlaceHolder\PlaceHolderUserControlView1.xaml.cs">
+      <DependentUpon>PlaceHolderUserControlView1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PlaceHolder\PlaceHolderView.xaml.cs">
+      <DependentUpon>PlaceHolderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PlaceHolder\PlaceHolderUserControlView2.xaml.cs">
+      <DependentUpon>PlaceHolderUserControlView2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HotKey\ShortCutView.xaml.cs">
+      <DependentUpon>ShortCutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SlideView\SlideView1.xaml.cs">
+      <DependentUpon>SlideView1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SlideView\UserControl0.xaml.cs">
+      <DependentUpon>UserControl0.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SlideView\UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SlideView\UserControl2.xaml.cs">
+      <DependentUpon>UserControl2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\AutoGenerateColumnView.xaml.cs">
+      <DependentUpon>AutoGenerateColumnView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\AutoGenerateControlView.xaml.cs">
+      <DependentUpon>AutoGenerateControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\BigDataView.xaml.cs">
+      <DependentUpon>BigDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\ColumnWidthModeView.xaml.cs">
+      <DependentUpon>ColumnWidthModeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\CustomUnBoundView.xaml.cs">
+      <DependentUpon>CustomUnBoundView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\DragableBetweenTwoGridControlView.xaml.cs">
+      <DependentUpon>DragableBetweenTwoGridControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\DragableView.xaml.cs">
+      <DependentUpon>DragableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\HotKey\HotKeyView.xaml.cs">
+      <DependentUpon>HotKeyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\EnterBehaviorView.xaml.cs">
+      <DependentUpon>EnterBehaviorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\SelectableAndEditableColumnView.xaml.cs">
+      <DependentUpon>SelectableAndEditableColumnView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\MouseOverShowEditorButtonView.xaml.cs">
+      <DependentUpon>MouseOverShowEditorButtonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\GridControlBorderView.xaml.cs">
+      <DependentUpon>GridControlBorderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TreeListView\TreeListView1.xaml.cs">
+      <DependentUpon>TreeListView1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TreeListView\TreeListView2.xaml.cs">
+      <DependentUpon>TreeListView2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TreeListView\TreeListView3.xaml.cs">
+      <DependentUpon>TreeListView3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TreeListView\TreeListView5.xaml.cs">
+      <DependentUpon>TreeListView5.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TreeListView\TreeListView4.xaml.cs">
+      <DependentUpon>TreeListView4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TreeListView\TreeListViewOperatorView.xaml.cs">
+      <DependentUpon>TreeListViewOperatorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TreeView\TreeViewTestView.xaml.cs">
+      <DependentUpon>TreeViewTestView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Dictionary\ViewModel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SlidingControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TreeListExpandHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AutoClosedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AutoComplete\AutoCompleteView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ComboBox\TransparentComboBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomerConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DockPanel\DockPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListView\ListViewScrollBehaviorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Other\FileMultiSelectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Other\OtherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProgressBarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ComboBox\NewComboBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ComboBox\ComboBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dowloader\DowloaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LookUpEdit\LookUpEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PlaceHolder\PlaceHolderUserControlView1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PlaceHolder\PlaceHolderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PlaceHolder\PlaceHolderUserControlView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HotKey\ShortCutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SlideView\SlideView1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SlideView\UserControl0.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SlideView\UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SlideView\UserControl2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\AutoGenerateColumnView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\AutoGenerateControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\BigDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\ChangeRowColorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\ChangeRowColorView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Converter\Convertor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\TableView\ChangeRowColorView.xaml.cs">
+      <DependentUpon>ChangeRowColorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TableView\ChangeRowColorView2.xaml.cs">
+      <DependentUpon>ChangeRowColorView2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HomeView.xaml.cs">
+      <DependentUpon>HomeView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\TableView\ColumnWidthModeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\CustomUnBoundView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\DragableBetweenTwoGridControlView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TableView\DragableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\HotKey\HotKeyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\EnterBehaviorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\SelectableAndEditableColumnView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TableView\MouseOverShowEditorButtonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TableView\GridControlBorderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TreeListView\TreeListView1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TreeListView\TreeListView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TreeListView\TreeListView3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TreeListView\TreeListView5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\TreeListView\TreeListView4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TreeListView\TreeListViewOperatorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TreeView\TreeViewTestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Converter\MyConverter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource\EditorLocalizerResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditorLocalizerResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
+    <Folder Include="ViewModel\ListView\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HotKeyConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WpfControls.CS\WpfControls.CS.csproj">
+      <Project>{d01eb79f-d1ab-47f9-9c28-3432f032bf3a}</Project>
+      <Name>WpfControls.CS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.3.2.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.3.2.1\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+</Project>

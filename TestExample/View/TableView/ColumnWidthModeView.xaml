@@ -1,0 +1,155 @@
+﻿<Window x:Class="TestExample.View.TableView.ColumnWidthModeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:userControls="clr-namespace:TestExample.UserControls"
+        mc:Ignorable="d"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:tableView="clr-namespace:TestExample.ViewModel.TableView"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{dxmvvm:ViewModelSource Type=tableView:ColumnWidthModeViewModel}"
+        Title="ColumnWidthModeView" Height="900" Width="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <userControls:CustomGridControl x:Name="GridControl1" Grid.Row="0" ToolTip="注：定宽+自适应（列宽小于列表控件宽度时出现空白列，不允许出现百分比列，出现百分比列将导致百分比列填充满剩余空白宽度）">
+            <userControls:CustomGridControl.Columns>
+                <userControls:CustomGridColumn Header="定宽60" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="60">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+            </userControls:CustomGridControl.Columns>
+            <userControls:CustomGridControl.View>
+                <userControls:CustomTableView AllowEditing="False" ShowHorizontalLines="True" ShowVerticalLines="False"/>
+            </userControls:CustomGridControl.View>
+        </userControls:CustomGridControl>
+        <userControls:CustomGridControl x:Name="GridControl2" Grid.Row="1" ToolTip="注：定宽+自适应（列宽大于列表控件宽度时出现滚动条，不允许出现百分比列，出现百分比列将导致百分比列不可见）">
+            <userControls:CustomGridControl.Columns>
+                <userControls:CustomGridColumn Header="定宽60" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="60">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+            </userControls:CustomGridControl.Columns>
+            <userControls:CustomGridControl.View>
+                <userControls:CustomTableView AllowEditing="False" ShowHorizontalLines="True" ShowVerticalLines="False"/>
+            </userControls:CustomGridControl.View>
+        </userControls:CustomGridControl>
+        <userControls:CustomGridControl x:Name="GridControl3" Grid.Row="2" ToolTip="注：百分比列宽为去掉固定列表及自适应列宽后，列表控件剩余宽度的百分比">
+            <userControls:CustomGridControl.Columns>
+                <userControls:CustomGridColumn Header="定宽60" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="60">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="CustomColumnType=Special（默认200）" FieldName="Name" HorizontalHeaderContentAlignment="Center" CustomColumnType="Special">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="1/5列宽" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="*">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="隐藏列" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="*" CustomIsVisible="False">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="2/5列宽" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="2*">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="2/5列宽" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="2*">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+                <userControls:CustomGridColumn Header="自适应" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="Auto" CustomBestFit="True">
+                    <userControls:CustomGridColumn.EditSettings>
+                        <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                    </userControls:CustomGridColumn.EditSettings>
+                </userControls:CustomGridColumn>
+            </userControls:CustomGridControl.Columns>
+            <userControls:CustomGridControl.View>
+                <userControls:CustomTableView AllowEditing="False" ShowHorizontalLines="True" ShowVerticalLines="False"/>
+            </userControls:CustomGridControl.View>
+        </userControls:CustomGridControl>
+        <userControls:ColumnDisplayConfigurationButton Grid.Row="3" CustomGridControl="{Binding ElementName=GridControl3}" Width="150" Height="40" Content="自定义"/>
+    </Grid>
+</Window>

@@ -1,0 +1,39 @@
+﻿<Window x:Class="TestExample.View.TreeListView.TreeListView3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        mc:Ignorable="d"
+        Title="树列表（普通行模板）" Height="500" Width="1000" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <dxg:GridControl x:Name="GridControl" Grid.Row="0">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn Header="ID" FieldName="Id"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="名称" FieldName="Name"/>
+                <dxg:GridColumn Header="类型" FieldName="Type"/>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TreeListView KeyFieldName="Id" ParentFieldName="ParentId" AutoExpandAllNodes="True" ShowIndicator="False" ShowHorizontalLines="True" ShowVerticalLines="True" RowIndent="0">
+                    <dxg:TreeListView.DataRowTemplate>
+                        <DataTemplate>
+                            <StackPanel FlowDirection="LeftToRight" Orientation="Horizontal">
+                                <Label Content="名称:"/>
+                                <Label Content="{Binding Row.Name}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </dxg:TreeListView.DataRowTemplate>
+                </dxg:TreeListView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>

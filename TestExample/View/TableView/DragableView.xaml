@@ -1,0 +1,38 @@
+﻿<Window x:Class="TestExample.View.TableView.DragableView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:tableView="clr-namespace:TestExample.View.TableView"
+        DataContext="{dxmvvm:ViewModelSource Type=tableView:DragableViewModel}"
+        mc:Ignorable="d"
+        Title="DragableView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <dxg:GridControl x:Name="TestGrid" ItemsSource="{Binding Students}">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Id" Header="ID"/>
+                <dxg:GridColumn FieldName="Name" Header="名称"/>
+                <dxg:GridColumn FieldName="Sort" Header="排序"/>
+                <dxg:GridColumn FieldName="OperationType" Header="操作类型"/>
+            </dxg:GridControl.Columns>
+            <dxmvvm:Interaction.Behaviors>
+                <dxg:GridDragDropManager Dropped="GridDragDropManager_OnDropped">
+                    <!--<dxg:GridDragDropManager.DragElementTemplate>
+                        <DataTemplate>
+                            --><!--<TextBlock Text="{Binding FirstDraggingObject.Name}" />--><!--
+                        </DataTemplate>
+                    </dxg:GridDragDropManager.DragElementTemplate>-->
+                </dxg:GridDragDropManager>
+            </dxmvvm:Interaction.Behaviors>
+            <dxg:GridControl.View>
+                <dxg:TableView NavigationStyle="Row"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>

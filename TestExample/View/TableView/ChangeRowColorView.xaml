@@ -1,0 +1,145 @@
+﻿<Window x:Class="TestExample.View.TableView.ChangeRowColorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        mc:Ignorable="d"
+        Title="整行变色" Height="600" Width="1000" WindowStartupLocation="CenterScreen">
+    <ScrollViewer>
+        <Grid Height="800">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--所有列按比例-->
+            <dxg:GridControl x:Name="GridControl" Grid.Row="0" ToolTip="第一列占屏幕1/3宽度，第二列占屏幕2/3宽度" PreviewKeyDown="ChangeRowColorView_OnPreviewKeyDown">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn Header="ID" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="*">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="2*">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="TableView" ShowIndicator="True" ShowHorizontalLines="True" AutoWidth="False" ShowVerticalLines="False" AllowConditionalFormattingManager="True" AllowConditionalFormattingMenu="True">
+                        <dxg:TableView.FormatConditions>
+                            <dxg:FormatCondition Expression="[Index]=0" FieldName="Index" ApplyToRow="True">
+                                <dxg:Format Background="Green" FontWeight="Bold" TextDecorations="{x:Null}" />
+                            </dxg:FormatCondition>
+                            <dxg:FormatCondition Expression="[Index]=1" FieldName="Index" ApplyToRow="True">
+                                <dxg:Format Background="Blue" FontWeight="Bold" TextDecorations="{x:Null}" />
+                            </dxg:FormatCondition>
+                        </dxg:TableView.FormatConditions>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+            <!--部分列定宽，部分列按比例-->
+            <dxg:GridControl x:Name="GridControl2" Grid.Row="1" ToolTip="第一列定宽100，第二列定宽150，第三列占屏幕剩余宽度的1/3，第四列占屏幕剩余宽度的2/3">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn Header="ID" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="100">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="ID" FieldName="Id" HorizontalHeaderContentAlignment="Center" Width="150">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="*">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center" Width="2*">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView ShowIndicator="True" ShowHorizontalLines="True" AutoWidth="False" ShowVerticalLines="False" AllowConditionalFormattingManager="True" AllowConditionalFormattingMenu="True">
+                        <dxg:TableView.FormatConditions>
+                            <dxg:FormatCondition Expression="[Index]=0" FieldName="Index" ApplyToRow="True">
+                                <dxg:Format Background="Green" FontWeight="Bold" TextDecorations="{x:Null}" />
+                            </dxg:FormatCondition>
+                            <dxg:FormatCondition Expression="[Index]=1" FieldName="Index" ApplyToRow="True">
+                                <dxg:Format Background="Blue" FontWeight="Bold" TextDecorations="{x:Null}" />
+                            </dxg:FormatCondition>
+                        </dxg:TableView.FormatConditions>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+            <dxg:GridControl x:Name="GridControl3" Grid.Row="2" Loaded="GridControl3_OnLoaded">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn Header="ID" FieldName="Id" HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="ID" FieldName="Id" HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Center"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                    <dxg:GridColumn Header="名称" FieldName="Name" HorizontalHeaderContentAlignment="Center">
+                        <dxg:GridColumn.EditSettings>
+                            <dxe:TextEditSettings HorizontalContentAlignment="Left"/>
+                        </dxg:GridColumn.EditSettings>
+                    </dxg:GridColumn>
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="TableView3" ShowIndicator="True" ShowHorizontalLines="True" AutoWidth="False" BestFitArea="All" AllowBestFit="True" BestFitMode="AllRows" ShowVerticalLines="False" AllowConditionalFormattingManager="True" AllowConditionalFormattingMenu="True">
+                        <dxg:TableView.FormatConditions>
+                            <dxg:FormatCondition Expression="[Index]=0" FieldName="Index" ApplyToRow="True">
+                                <dxg:Format Background="Green" FontWeight="Bold" TextDecorations="{x:Null}" />
+                            </dxg:FormatCondition>
+                            <dxg:FormatCondition Expression="[Index]=1" FieldName="Index" ApplyToRow="True">
+                                <dxg:Format Background="Blue" FontWeight="Bold" TextDecorations="{x:Null}" />
+                            </dxg:FormatCondition>
+                        </dxg:TableView.FormatConditions>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+    </ScrollViewer>
+</Window>

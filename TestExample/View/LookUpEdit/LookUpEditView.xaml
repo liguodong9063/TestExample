@@ -1,0 +1,39 @@
+﻿<Window x:Class="TestExample.View.LookUpEdit.LookUpEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:utilities="clr-namespace:TestExample.Utilities"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:lookUpEdit="clr-namespace:TestExample.ViewModel.LookUpEdit"
+        DataContext="{dxmvvm:ViewModelSource Type=lookUpEdit:LookUpEditViewModel}"
+        mc:Ignorable="d"
+        Title="LookUpEditView" Height="450" Width="800">
+    <Grid>
+        <Grid.Resources>
+            <ControlTemplate x:Key="PopupContentTemplate">
+                <dxg:GridControl x:Name="PART_GridControl">
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn FieldName="Name" />
+                    </dxg:GridControl.Columns>
+                    <dxg:GridControl.View>
+                        <dxg:TableView ShowBandsPanel="False" ShowDetailButtons="False" ShowIndicator="False"
+                                       ShowAutoFilterRow="False" ShowGroupPanel="False" ShowGroupFooters="False"
+                                       ShowGroupedColumns="False" ShowColumnHeaders="False" AutoWidth="True" />
+                    </dxg:GridControl.View>
+                </dxg:GridControl>
+            </ControlTemplate>
+        </Grid.Resources>
+        <utilities:CustomLookUpEdit x:Name="LookUpEdit" 
+                        ItemsSource="{Binding Staffs}"
+                        SelectedItem="{Binding SelectedStaff}"
+                        DisplayMember="Name"
+                        ValueMember="Id"
+                        ImmediatePopup="True"
+                        PopupContentTemplate="{StaticResource PopupContentTemplate}"
+                        PopupHeight="200"
+                        Height="50"
+                        KeyUp="LookUpEdit_KeyUp"/>
+    </Grid>
+</Window>

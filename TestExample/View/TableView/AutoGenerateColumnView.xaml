@@ -1,0 +1,136 @@
+﻿<Window x:Class="TestExample.View.TableView.AutoGenerateColumnView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:tableView="clr-namespace:TestExample.ViewModel.TableView"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:userControls="clr-namespace:TestExample.UserControls"
+        xmlns:editors="http://wpfcontrols.com/"
+        xmlns:infrastructure="clr-namespace:TestExample.Infrastructure"
+        DataContext="{dxmvvm:ViewModelSource Type=tableView:AutoGenerateColumnViewModel}"
+        mc:Ignorable="d"
+        Title="AutoGenerateColumnView" Height="450" Width="800">
+    <Window.Resources>
+        <!--放到公共资源-->
+        <Style x:Key="RowStyleBackground" TargetType="dxg:RowControl">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="#e2f1fb" />
+                    <Setter Property="Foreground" Value="#000000" />
+                </Trigger>
+                <Trigger Property="SelectionState" Value="FocusedAndSelected">
+                    <Setter Property="Background" Value="#afddfa" />
+                    <Setter Property="Foreground" Value="#000000" />
+                </Trigger>
+                <DataTrigger Binding="{Binding Path=SelectionState}" Value="Focused">
+                    <Setter Property="Background" Value="#afddfa" />
+                    <Setter Property="Foreground" Value="#000000" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=SelectionState}" Value="Selected">
+                    <Setter Property="Background" Value="#afddfa" />
+                    <Setter Property="Foreground" Value="#000000" />
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="dxg:RowControl" BasedOn="{StaticResource RowStyleBackground}">
+            <Setter Property="Height" Value="30" />
+        </Style>
+
+        <ControlTemplate x:Key="AutoCompleteColumnDisplayTemplate">
+            <StackPanel VerticalAlignment="Center" Margin="2">
+                <TextBlock Text="{Binding Value.Value}"/>
+            </StackPanel>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="AutoCompleteColumnEditTemplate">
+            <editors:AutoCompleteTextBox x:Name="AutoComplete"
+                                         DisplayMember="Name"
+                                         AccountingTypeId="{Binding Value.AccountingTypeId,UpdateSourceTrigger=PropertyChanged}"
+                                         SelectionChanged="AutoComplete_OnSelectionChanged"
+                                         Text="{infrastructure:ValidationBinding Value.Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                         Provider="{Binding DataContext.SuggestionProvider,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                                         IsInColumn="True"
+                                         Height="25"
+                                         Watermark="在此输入">
+                <editors:AutoCompleteTextBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding No}"/>
+                            <Label Grid.Column="1" Content="{Binding Name}"/>
+                        </Grid>
+                    </DataTemplate>
+                </editors:AutoCompleteTextBox.ItemTemplate>
+                <editors:AutoCompleteTextBox.LoadingContent>
+                    <Label Content="Loading..." Margin="5" FontSize="14" />
+                </editors:AutoCompleteTextBox.LoadingContent>
+            </editors:AutoCompleteTextBox>
+        </ControlTemplate>
+
+        <DataTemplate x:Key="AutoCompleteColumnCellTemplate">
+            <editors:AutoCompleteTextBox x:Name="AutoComplete"
+                                         DisplayMember="Name"
+                                         AccountingTypeId="{Binding Value.AccountingTypeId,UpdateSourceTrigger=PropertyChanged}"
+                                         SelectionChanged="AutoComplete_OnSelectionChanged"
+                                         Text="{infrastructure:ValidationBinding Value.Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                         Provider="{Binding DataContext.SuggestionProvider,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
+                                         IsInColumn="True"
+                                         Height="25"
+                                         Watermark="在此输入">
+                <editors:AutoCompleteTextBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="{Binding No}"/>
+                            <Label Grid.Column="1" Content="{Binding Name}"/>
+                        </Grid>
+                    </DataTemplate>
+                </editors:AutoCompleteTextBox.ItemTemplate>
+                <editors:AutoCompleteTextBox.LoadingContent>
+                    <Label Content="Loading..." Margin="5" FontSize="14" />
+                </editors:AutoCompleteTextBox.LoadingContent>
+            </editors:AutoCompleteTextBox>
+        </DataTemplate>
+
+        <ControlTemplate x:Key="CommonColumnDisplayTemplate">
+            <StackPanel VerticalAlignment="Center" Margin="2">
+                <TextBlock Text="{Binding Value.Value}" HorizontalAlignment="Stretch"/>
+            </StackPanel>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="CommonColumnEditTemplate">
+            <StackPanel VerticalAlignment="Center" Margin="2">
+                <TextBox Text="{Binding Value.Value}" HorizontalAlignment="Stretch"/>
+            </StackPanel>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <userControls:CustomGridControl x:Name="GridControl" Grid.Row="0">
+            <userControls:CustomGridControl.View>
+                <userControls:CustomTableView ShowGroupPanel="False" AutoWidth="True"/>
+            </userControls:CustomGridControl.View>
+        </userControls:CustomGridControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Content="添加明细" Width="100" Height="30" Click="AddDetailButton_OnClick"/>
+            <Button Content="删除明细" Width="100" Height="30" Click="DeleteDetailButton_OnClick"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="提交" Width="100" Height="30" Click="SubmitButton_OnClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

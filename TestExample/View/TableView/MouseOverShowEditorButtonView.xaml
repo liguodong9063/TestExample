@@ -1,0 +1,80 @@
+﻿<Window x:Class="TestExample.View.TableView.MouseOverShowEditorButtonView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:userControls="clr-namespace:TestExample.UserControls"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="FocusShowEditButtonView" Height="450" Width="800">
+    <Grid>
+        <userControls:CustomGridControl x:Name="GridControl">
+            <userControls:CustomGridControl.Columns>
+                <userControls:CustomGridColumn FieldName="Id" Header="Id"/>
+                <userControls:CustomGridColumn FieldName="Name" Header="名称">
+                    <userControls:CustomGridColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid x:Name="ParentGrid">
+                                <Grid x:Name="DisplayMode">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=EditorButton,Path=Tag}" Value="0">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=EditorButton,Path=Tag}" Value="1">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Data.Name}"/>
+                                    <Button x:Name="EditorButton" Grid.Column="1" Content="修改" Tag="0" Width="48" Height="20" Click="ShowEditor_OnClick">
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=DisplayMode,Path=IsMouseOver}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                                <Grid x:Name="EditorMode">
+                                    <Grid.Style>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ElementName=EditorButton,Path=Tag}" Value="0">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ElementName=EditorButton,Path=Tag}" Value="1">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Style>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="EditorBox" Grid.Column="0" Text="{Binding Data.Name}" LostFocus="TextBox_OnLostFocus"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </userControls:CustomGridColumn.CellTemplate>
+                </userControls:CustomGridColumn>
+            </userControls:CustomGridControl.Columns>
+            <userControls:CustomGridControl.View>
+                <userControls:CustomTableView/>
+            </userControls:CustomGridControl.View>
+        </userControls:CustomGridControl>
+    </Grid>
+</Window>

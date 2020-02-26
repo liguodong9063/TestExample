@@ -1,0 +1,32 @@
+﻿<Window x:Class="TestExample.View.HotKey.HotKeyView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:hotKey="clr-namespace:TestExample.ViewModel.HotKey"
+        DataContext="{dxmvvm:ViewModelSource Type=hotKey:HotKeyViewModel}"
+        mc:Ignorable="d"
+        Title="HotKeyView" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Width="300" Text="{Binding TestContent}" Background="YellowGreen" HorizontalAlignment="Right" TextAlignment="Right"/>
+        <Grid Grid.Row="2">
+            <dxg:GridControl x:Name="TestGrid" ItemsSource="{Binding ItemSources}">
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn Header="Id" FieldName="Id"/>
+                    <dxg:GridColumn Header="名称" FieldName="Name"/>
+                    <dxg:GridColumn Header="操作" FieldName="Id" AllowEditing="False"/>
+                </dxg:GridControl.Columns>
+                <dxg:GridControl.View>
+                    <dxg:TableView NewItemRowPosition="Bottom"  InitNewRow="TableView_OnInitNewRow"/>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+    </Grid>
+</Window>

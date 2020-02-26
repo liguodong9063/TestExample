@@ -1,0 +1,22 @@
+﻿<Window x:Class="TestExample.View.TableView.GridControlBorderView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestExample.View.TableView"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+        mc:Ignorable="d"
+        Title="GridControlBorderView" Height="450" Width="800">
+    <Grid>
+        <Border BorderThickness="1" BorderBrush="LightGreen" Width="400" Height="200">
+            <dxg:GridControl x:Name="GridControl" ShowBorder="False">
+                <dxg:GridColumn Header="列一" FieldName="Column1"/>
+                <dxg:GridColumn Header="列二" FieldName="Column2"/>
+                <dxg:GridColumn Header="列三" FieldName="Column3"/>
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowGrouping="False" ShowGroupPanel="False" ShowHorizontalLines="False" ShowVerticalLines="False"/>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Border>
+    </Grid>
+</Window>
