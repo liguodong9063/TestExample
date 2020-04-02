@@ -22,8 +22,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <!--set UseLayoutRounding="False"：避免四边边框宽度不一致-->
-                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="False" VerticalAlignment="Center">
+                            <!--set UseLayoutRounding="True" SnapsToDevicePixels="True"：避免四边边框宽度不一致-->
+                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="True" SnapsToDevicePixels="True" VerticalAlignment="Center">
                                 <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Center" VerticalAlignment="Center" LineStackingStrategy="BlockLineHeight" LineHeight="16"/>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -58,8 +58,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <!--set UseLayoutRounding="False"：避免四边边框宽度不一致-->
-                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="False" VerticalAlignment="Center">
+                            <!--set UseLayoutRounding="True" SnapsToDevicePixels="True"：避免四边边框宽度不一致-->
+                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="True" SnapsToDevicePixels="True" VerticalAlignment="Center">
                                 <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Center" VerticalAlignment="Center" LineStackingStrategy="BlockLineHeight" LineHeight="16"/>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -95,8 +95,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <!--set UseLayoutRounding="False"：避免四边边框宽度不一致-->
-                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="False" VerticalAlignment="Center">
+                            <!--set UseLayoutRounding="True" SnapsToDevicePixels="True"：避免四边边框宽度不一致-->
+                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="True" SnapsToDevicePixels="True" VerticalAlignment="Center">
                                 <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Center" VerticalAlignment="Center" LineStackingStrategy="BlockLineHeight" LineHeight="16"/>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -135,8 +135,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <!--set UseLayoutRounding="False"：避免四边边框宽度不一致-->
-                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="False" VerticalAlignment="Center">
+                            <!--set UseLayoutRounding="True" SnapsToDevicePixels="True"：避免四边边框宽度不一致-->
+                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="True" SnapsToDevicePixels="True" VerticalAlignment="Center">
                                 <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Center" VerticalAlignment="Center" LineStackingStrategy="BlockLineHeight" LineHeight="16"/>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -176,8 +176,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <!--set UseLayoutRounding="False"：避免四边边框宽度不一致-->
-                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="False" VerticalAlignment="Center">
+                            <!--set UseLayoutRounding="True" SnapsToDevicePixels="True"：避免四边边框宽度不一致-->
+                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="True" SnapsToDevicePixels="True" VerticalAlignment="Center">
                                 <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Center" VerticalAlignment="Center" LineStackingStrategy="BlockLineHeight" LineHeight="16"/>
                             </Border>
                             <ControlTemplate.Triggers>
@@ -216,8 +216,8 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <!--set UseLayoutRounding="False"：避免四边边框宽度不一致-->
-                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="False" VerticalAlignment="Center">
+                            <!--set UseLayoutRounding="True" SnapsToDevicePixels="True"：避免四边边框宽度不一致-->
+                            <Border Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" CornerRadius="2" UseLayoutRounding="True" SnapsToDevicePixels="True" VerticalAlignment="Center">
                                 <TextBlock Text="{TemplateBinding Content}" Foreground="{TemplateBinding Foreground}" FontSize="{TemplateBinding FontSize}" HorizontalAlignment="Center" VerticalAlignment="Center" LineStackingStrategy="BlockLineHeight" LineHeight="16"/>
                             </Border>
                             <ControlTemplate.Triggers>
