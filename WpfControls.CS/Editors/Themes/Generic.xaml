@@ -116,7 +116,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:AutoCompleteTextBox}">
                     <!--<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="3">-->
-                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" UseLayoutRounding="False">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" UseLayoutRounding="True" SnapsToDevicePixels="True">
                         <Grid UseLayoutRounding="True">
                             <DockPanel>
                                 <!--<ContentPresenter ContentSource="Icon" x:Name="PART_Icon" Visibility="{TemplateBinding IconVisibility}" />-->
