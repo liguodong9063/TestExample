@@ -1,0 +1,76 @@
+﻿<styleSample:DialogViewBase x:Class="StyleSample.CommonDialogView"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:styleSample="clr-namespace:StyleSample"
+                            Height="100" Width="400" 
+                            WindowStartupLocation="CenterOwner" 
+                            SizeToContent="WidthAndHeight"
+                            ResizeMode="NoResize"
+                            WindowStyle="None"
+                            mc:Ignorable="d">
+    <Border BorderThickness="0" BorderBrush="Transparent">
+        <Border.Resources>
+            <LinearGradientBrush x:Key="LinearGradientGrayBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#f3f3f3" Offset="1" />
+            </LinearGradientBrush>
+
+            <Style TargetType="Button" x:Key="CloseMessageBoxButton">
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="back" Background="{TemplateBinding Background}" Margin="2 2 4 2" Width="18" Height="18" BorderBrush="{TemplateBinding BorderBrush}" UseLayoutRounding="True" SnapsToDevicePixels="True">
+                                <Image x:Name="CloseImage" Height="10" Width="10"   HorizontalAlignment="Center" VerticalAlignment="Center" Source="pack://application:,,,/StyleSample;component/Images/disagress.png" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="CloseImage" Property="Source" Value="pack://application:,,,/StyleSample;component/Images/disagress-hover.png" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Border.Resources>
+        <Border.Effect>
+            <DropShadowEffect x:Name="OG" BlurRadius="10" Color="#000000" Direction="30" Opacity="0.4" RenderingBias="Performance" ShadowDepth="0"/>
+        </Border.Effect>
+        <Grid Background="#ffffff" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="{StaticResource LinearGradientGrayBackground}" MouseLeftButtonDown="WindowHeader_OnMouseLeftButtonDown" BorderBrush="#e5e5e5" BorderThickness="0,0,0,1" Height="30">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="#666666" Text="退票" FontSize="{x:Static styleSample:UIConstants.StandardFontSize}" FontWeight="Bold"/>
+                    <Button Grid.Column="1" Style="{StaticResource CloseMessageBoxButton}" HorizontalAlignment="Right" Click="CancelButton_OnClick"/>
+                </Grid>
+            </Border>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="30,30,30,0">
+                <Frame x:Name="MainContent" Background="Red" HorizontalAlignment="Stretch"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,5,0,30">
+                <DockPanel HorizontalAlignment="Center">
+                    <Button Click="YesButtonBase_OnClick" />
+                    <Button Click="CancelButton_OnClick" Margin="10,0,0,0"/>
+                </DockPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</styleSample:DialogViewBase>

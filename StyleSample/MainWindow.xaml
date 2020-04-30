@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:styleSample="clr-namespace:StyleSample"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <!--注：所有页面均需设置UseLayoutRounding="True"，否则会出很多问题，例如：-->
@@ -247,6 +248,9 @@
             <Button Content="修改" Style="{StaticResource NormalSizeLightTextButtonStyle}" IsEnabled="True" Margin="0,0,0,5"/>
             <Button Content="提交" Style="{StaticResource LargeSizeDarkTextButtonStyle}" IsEnabled="True" Margin="0,0,0,5"/>
             <Button Content="取消" Style="{StaticResource LargeSizeLightTextButtonStyle}" IsEnabled="True" Margin="0,0,0,5"/>
+            
+            <Button Content="跳转1" Style="{StaticResource SmallSizeDarkTextButtonStyle}" Click="JumbPage_OnClick"/>
+            <Button Content="跳转2" Style="{StaticResource SmallSizeDarkTextButtonStyle}" Click="JumbPage2_OnClick"/>
         </StackPanel>
     </Grid>
 </Window>

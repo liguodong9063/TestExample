@@ -133,7 +133,8 @@
                                              HorizontalAlignment="Stretch"
                                              VerticalAlignment="Center"
                                              Style="{StaticResource ResourceKey=TransparentTextBoxStyle}"
-                                             Text="{Binding Path=Text, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
+                                             Text="{Binding Path=Text, RelativeSource={RelativeSource Mode=TemplatedParent}, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
+                                             Margin="5,0"/>
                                     <!--添加一个下拉按钮，尚未完工-->
                                     <!--<ToggleButton HorizontalAlignment="Right" 
                                                   Width="20"
